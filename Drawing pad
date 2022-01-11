@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+ <html>
+ <head>
+ <title>Drawing Pad</title>
+ <style type="text/css">
+ /* modified my Monac */
+ 
+ svg{
+ height:100vh;
+ width:100vw;
+ position:fixed;
+ top:0;left:0;
+ }
+ div{
+ padding:20px;
+ background:black;
+ position:fixed;
+ border-radius:20%;
+ bottom:20px;
+ left:calc(50vw - 40px);
+ color:white;
+ }
+ 
+ </style>
+ 
+ </head>
+ <body>
+    <svg id="s">
+    <path id="p" stroke="#000aaa"fill="#00aaaa"stroke-width="5"stroke-linecap="round"/>    
+    </svg>
+    <div onclick="ar='M0,0 '">clear</div>
+   
+ <script type="text/javascript">
+ 
+ var user = prompt("please input your name...");
+ alert("welcome "+ user + ", you can now draw with these drawing pad")
+ 
+ ar="M0,0 "
+ onload=()=>{
+ setInterval(()=>{ p.setAttribute('d',ar) })
+ s.ontouchstart=(e)=>{
+ if(e.cancelable) e.preventDefault();
+ X=e.changedTouches[0].pageX;
+ Y=e.changedTouches[0].pageY;
+ ar+=`M${X},${Y} `
+ }
+ s.ontouchmove=(e)=>{
+ if(e.cancelable) e.preventDefault();
+ X=e.changedTouches[0].pageX;
+ Y=e.changedTouches[0].pageY;
+ ar+=`L${X},${Y} `
+ }}
+ 
+ </script>
+ <footer align="center" >@Eneghalu Kosisochukwu</footer>
+ 
+ </body>
+ </html>
